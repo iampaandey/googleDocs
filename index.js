@@ -8,7 +8,8 @@ const io = require("socket.io")(server,{
   {
       origin:"*",
       methods:["GET", "POST"]
-  }
+  },
+  allowEIO3: true
 });
 
 
