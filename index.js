@@ -1,19 +1,22 @@
 // import express from "express"
 // import cors from "cors"
-import {Server} from "socket.io"
-import { createServer } from 'http';
+const app=require("express")();
+const server = require("http").createServer(app);
+const cors = require("cors");
+const io = require("socket.io")(server,{
+  cors:
+  {
+      origin:"*",
+      methods:["GET", "POST"]
+  }
+});
 
-const httpServer = createServer();
+
 // const app = express();
 // app.use(cors())
 var str = "Raghavpandeyvimalmishra"
 
-const io = new Server(httpServer,{
-    cors: {
-        origin: "https://candid-syrniki-7bbc54.netlify.app/",
-        methods: ["GET", "POST"]
-      }
-  })
+
 
 
 io.on('connection', (socket) => {
@@ -29,6 +32,7 @@ io.on('connection', (socket) => {
       socket.on("querry",(q)=>{
         let idx = Number(q.idx);
         let curStr = q.str;
+        console.log(q)
         if(idx < str.length)
         {
             if(curStr[idx] == str[idx])
@@ -54,7 +58,7 @@ io.on('connection', (socket) => {
 
 
 
-httpServer.listen(7000, ()=>{
+  server.listen(7000, ()=>{
     console.log("Running at port 7000")
 })
 // app.listen(8000, ()=>{
