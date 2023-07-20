@@ -5,6 +5,7 @@ import { createServer } from 'http';
 
 const httpServer = createServer();
 const app = express();
+app.use(cors())
 var str = "Raghavpandeyvimalmishra"
 
 const io = new Server(httpServer,{
