@@ -9,7 +9,7 @@ var str = "Raghavpandeyvimalmishra"
 
 const io = new Server(httpServer,{
     cors: {
-        origin: "https://amazing-jalebi-bfe4c1.netlify.app/",
+        origin: "https://elegant-figolla-f9fda1.netlify.app/",
         methods: ["GET", "POST"]
       }
   })
