@@ -1,11 +1,11 @@
-import express from "express"
-import cors from "cors"
+// import express from "express"
+// import cors from "cors"
 import {Server} from "socket.io"
 import { createServer } from 'http';
 
 const httpServer = createServer();
-const app = express();
-app.use(cors())
+// const app = express();
+// app.use(cors())
 var str = "Raghavpandeyvimalmishra"
 
 const io = new Server(httpServer,{
@@ -57,6 +57,6 @@ io.on('connection', (socket) => {
 httpServer.listen(7000, ()=>{
     console.log("Running at port 7000")
 })
-app.listen(8000, ()=>{
-    console.log("Running at port 8000")
-})
+// app.listen(8000, ()=>{
+//     console.log("Running at port 8000")
+// })
