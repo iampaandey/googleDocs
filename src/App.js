@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react"
 import './App.css';
 import {  io } from 'socket.io-client';
-const skt = io('http://localhost:7000')
+const skt = io('https://googledocs-h8x5.onrender.com')
 
 
 function App() {
@@ -10,32 +10,18 @@ function App() {
   useEffect(()=>{
     skt.on("connect",()=>{
       console.log("done")
-    }) 
-    // skt.on("msg",(msgS)=>{
-    //   let data=[];
-    //   if(localStorage.getItem("prev") !== null){
-    //     console.log("aya mai")
-    //    data = JSON.parse(localStorage.getItem("prev"))
-    //   }
-    //   const obj = [...list,...data,msgS]
-    //   localStorage.setItem("prev",JSON.stringify(obj));
-    //   console.log(obj)
-    //   setList(obj)
-    //    })
-       
-   
+    })          
   },[])
   
 
 
+
   skt.on("cur",(str)=>{
-    console.log(str)
+    console.log(str);
     setMess(str)
    })
+ 
  const handleSubmit = ()=>{ 
-  let i = Number(idx);
- setMess(mess.slice(0,i) + mess.slice(i+1, mess.length));
-
   const qr ={
     idx:idx,
     str:mess, 
