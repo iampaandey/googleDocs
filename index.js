@@ -36,11 +36,12 @@ io.on('connection', (socket) => {
         console.log(q)
         if(idx < str.length)
         {
-            
+            if(curStr[idx] == str[idx])
+            {
                 let ln = str.length
                 str = str.slice(0,idx) + str.slice(idx+1, ln);
                 socket.broadcast.emit("cur",str)
-            
+            }
         }
       })
 
