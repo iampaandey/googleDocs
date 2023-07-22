@@ -21,27 +21,26 @@ var str = "Raghavpandeyvimalmishra"
 
 
 io.on('connection', (socket) => {
+   // socket.on("msg", (msg)=>{
+      //   console.log(msg)
+      //   socket.emit("msg",msg)
+      // })
     console.log(`id : ${socket.id} connected`);
     socket.on('disconnect', () => {
         console.log('user disconnected');
       });
       socket.emit("cur",str)
-      socket.on("msg", (msg)=>{
-        console.log(msg)
-        socket.broadcast.emit("msg",msg)
-      })
       socket.on("querry",(q)=>{
-        let idx = Number(q.idx);
         let curStr = q.str;
+        let diff=str.length-curStr.length;
+        let idx = Number(q.idx)- diff;
+        (idx==-1) ? io.emit("cur",str) : idx
         console.log(q)
         if(idx < str.length)
         {
-            if(curStr[idx] == str[idx])
-            {
                 let ln = str.length
                 str = str.slice(0,idx) + str.slice(idx+1, ln);
-                socket.broadcast.emit("cur",str)
-            }
+                io.emit("cur",str)     
         }
       })
 
