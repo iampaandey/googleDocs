@@ -37,6 +37,7 @@ io.on('connection', (socket) => {
         if(curStr[idx]===str[idx]){
           let ln = str.length
           str = str.slice(0,idx) + str.slice(idx+1, ln);
+          console.log(str,curStr);
           io.emit("cur",str)  
         }
        
