@@ -35,7 +35,7 @@ io.on('connection', (socket) => {
         let diff=str.length-curStr.length;
         let idx = Number(q.idx)- diff;
         (idx==-1) ? io.emit("cur",str) : idx
-        console.log(q)
+        console.log(q,str,idx,diff);
         if(idx < str.length)
         {
                 let ln = str.length
