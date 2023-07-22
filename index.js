@@ -44,7 +44,8 @@ io.on('connection', (socket) => {
         else{
         var diff=curStr.length-str.length;
         idx-=diff;
-        (idx==-1) ? io.emit("cur",str) : idx
+        console.log(idx);
+        (idx<=-1) ? io.emit("cur",str) : idx
         if(idx < str.length)
         {
                 let ln = str.length
