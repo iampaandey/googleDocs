@@ -32,28 +32,26 @@ io.on('connection', (socket) => {
       socket.emit("cur",str)
       socket.on("querry",(q)=>{
         let curStr = q.str;
-        let diff=str.length-curStr.length;
-        let idx = Number(q.idx)- diff;
-        (idx==-1) ? io.emit("cur",str) : idx
+        let idx = Number(q.idx);
         console.log(q,str,idx,diff);
+        if(curStr[idx]===str[idx]){
+          let ln = str.length
+          str = str.slice(0,idx) + str.slice(idx+1, ln);
+          io.emit("cur",str)  
+        }
+       
+        else{
+        var diff=curStr.length-str.length;
+        idx-=diff;
+        (idx==-1) ? io.emit("cur",str) : idx
         if(idx < str.length)
         {
                 let ln = str.length
                 str = str.slice(0,idx) + str.slice(idx+1, ln);
                 io.emit("cur",str)     
         }
+        }      
       })
-
-
-
-
-
-
-
-
-
-
-
   });
 
 
