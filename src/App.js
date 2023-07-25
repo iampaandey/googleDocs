@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react"
 import './App.css';
 import {  io } from 'socket.io-client';
-const skt = io('https://ftdd.onrender.com')
+const skt = io('https://gydv.onrender.com')
 
 
 function App() {
