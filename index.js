@@ -43,13 +43,16 @@ io.on('connection', (socket) => {
         var diff=curStr.length-str.length;
         idx-=diff;
         console.log(idx, diff);
-        (idx<=-1) ? io.emit("cur",str) : "";
+        if(idx<=-1)io.emit("cur",str) 
+        else{
         if(idx < str.length)
         {
                 let ln = str.length
                 str = str.slice(0,idx) + str.slice(idx+1, ln);
                 io.emit("cur",str)     
         }
+      }
+        
         }      
       })
   });
