@@ -33,18 +33,16 @@ io.on('connection', (socket) => {
       socket.on("querry",(q)=>{
         let curStr = q.str;
         let idx = Number(q.idx);
-        console.log(q,str,idx,diff);
         if(curStr[idx]===str[idx]){
           let ln = str.length
           str = str.slice(0,idx) + str.slice(idx+1, ln);
-          console.log(str,curStr);
           io.emit("cur",str)  
         }
        
         else{
         var diff=curStr.length-str.length;
         idx-=diff;
-        console.log(idx, str);
+        console.log(idx, diff);
         (idx<=-1) ? io.emit("cur",str) : "";
         if(idx < str.length)
         {
