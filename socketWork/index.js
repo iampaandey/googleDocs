@@ -1,5 +1,6 @@
+const app = require("express")()
 const server = require("http").createServer(app);
-export const io = require("socket.io")(server,{
+const io = require("socket.io")(server,{
   cors:
   {
       origin:"*",
@@ -7,7 +8,13 @@ export const io = require("socket.io")(server,{
   },
   allowEIO3: true
 });
+const runServer=()=>{
 
 server.listen(7000, ()=>{
     console.log("Running at port 7000")
 })
+
+}
+
+
+module.exports = {io, runServer}
