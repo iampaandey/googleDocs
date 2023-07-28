@@ -9,10 +9,14 @@ function App() {
   // const [idx, setIdx] = useState("")
   const [val, setVal] = useState("")
   const [string,setString]=useState("");
+  const [str,setStr]=useState("");
+
   const [mess,setMess] = useState("");
   const [id,setId]=useState("");
+
   const [docid,setDocid]=useState("");
   const [flag,setFlag]=useState(false);
+  const [ti, setTi] = useState(0);
 
   useEffect(()=>{
     skt.on("connect",()=>{
@@ -62,8 +66,41 @@ setString(mess);
  }
  const handlenString=()=>{
     if(string.length)
-    handleSubmit(string);
+    // handleSubmit(string);
     setString("");
+ }
+ const handleSet=(e)=>{
+  const val = e.target.value;
+  // console.log(val)
+  let idx = ti;
+  let s = "";
+  while(idx < val.length)
+  {
+    if(val[idx] != " "){
+    s += val[idx];
+    }
+    else{
+      console.log(s)
+      if(s.length){
+      handleSubmit(s);
+      setString(s)
+      }
+      setTi(idx);
+    }
+    idx++;
+  }
+  setStr(s)
+  
+  
+ }
+ const handleChange =()=>{
+  console.log(str,string)
+  if(str !== string && str.length && str!==" ")
+  {
+    console.log(str)
+  handleSubmit(str);
+  setString(str)
+  }
  }
   return (
     <div className="App">
@@ -71,18 +108,16 @@ setString(mess);
       
 
      <button type="submit" className="btn"
+     
      onClick={handleCreate}
-     >Create New Modal </button>
+     >Create New Modal</button>
       {flag===true ?<textarea name="" id="" cols="30" rows="10"
-     onKeyUp={(e)=>{ if (e.key === " " ||
-     e.code === "Space"     
- ) { 
-     handlenString();
- 
- }}} 
- onChange={(e)=>{setString((e.target.value))}}
+      
+ onChange={(e)=>{handleSet(e)}}
+ onPointerOut={handleChange}
 
     ></textarea> : "" }
+    <button type="button" disabled = {string.length===0 ?true:false}>submit</button>
     </div>
   );
 }
