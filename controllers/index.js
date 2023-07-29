@@ -2,6 +2,7 @@
 const { io } = require("../socketWork");
 const { del } = require("./deletion");
 const { createdocModal } = require("./docCreation");
+const { getDoc } = require("./getDoc");
 const { insertion } = require("./insertion");
 const { updation } = require("./updation");
 const runSocket=()=>{
@@ -16,6 +17,7 @@ io.on('connection', (socket) => {
        del(socket);
        insertion(socket);
        updation(socket);
+       getDoc(socket);
    });
 }
 
