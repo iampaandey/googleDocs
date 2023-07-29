@@ -15,7 +15,7 @@ function App() {
   const [id,setId]=useState("");
 
   const [docid,setDocid]=useState("");
-  const [flag,setFlag]=useState(false);
+  const [flag,setFlag]=useState(true);
   const [ti, setTi] = useState(0);
 
   useEffect(()=>{
@@ -43,12 +43,24 @@ function App() {
   //   str:mess, 
   // }
   // skt.emit('querry',qr)
-  const q ={
-    str:vall,
+  // const q ={
+  //   // str:vall,
+  //   docid:docid
+  // }
+  // skt.emit("ins",q);
+  const querry={
     docid:docid
   }
-  skt.emit("ins",q);
+  skt.emit("getDoc",querry)
  }
+ skt.on("docresult",(obj)=>{
+   let str="";
+   obj.response[0].map((e)=>{
+     str+=e.value;
+     str+=" ";
+   })
+   setVal(str);
+ })
 const handleEdit=()=>{
 setString(mess);
 }
@@ -102,22 +114,28 @@ setString(mess);
   setString(str)
   }
  }
+ 
   return (
     <div className="App">
       <h1>{docid}</h1>
       
 
-     <button type="submit" className="btn"
+     {/* <button type="submit" className="btn"
      
      onClick={handleCreate}
-     >Create New Modal</button>
+     >Create New Modal</button> */}
+      <input type="text" value={docid} 
+      onChange={(e)=>{setDocid(e.target.value)}}
+      />
       {flag===true ?<textarea name="" id="" cols="30" rows="10"
-      
- onChange={(e)=>{handleSet(e)}}
- onPointerOut={handleChange}
+      value={val}
+//  onChange={(e)=>{handleSet(e)}}
+//  onPointerOut={handleChange}
 
     ></textarea> : "" }
-    <button type="button" disabled = {string.length===0 ?true:false}>submit</button>
+    <button type="button"
+    onClick={handleSubmit}
+     >submit</button>
     </div>
   );
 }
