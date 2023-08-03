@@ -49,7 +49,8 @@ function App() {
   // }
   // skt.emit("ins",q);
   const querry={
-    docid:docid
+    docid:docid,
+    token:localStorage.getItem("token")
   }
   skt.emit("getDoc",querry)
  }
