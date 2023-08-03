@@ -1,0 +1,11 @@
+const { docModal } = require("./Db/modals/docModal");
+const { io } = require("./socketWork");
+const {stringModal}=require("./Db/modals/stringModal");
+const { auth } = require("./controllers/auth");
+const { userModal } = require("./Db/modals/userModal");
+const express = require("express");
+const app = express()
+const cors =require("cors")
+const server = require("http").createServer(app);
+const jwt = require("jsonwebtoken");    
+module.exports= {docModal,io, stringModal, auth,userModal, express, app, cors,server,jwt}

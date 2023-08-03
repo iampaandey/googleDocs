@@ -1,8 +1,8 @@
-const { docModal } = require("../Db/modals/docModal");
-const { io } = require("../socketWork");
-const {stringModal}=require("../Db/modals/stringModal");
+const {docModal,io, stringModal, auth} = require("../imports")
 const getDoc=(socket)=>{
     socket.on("getDoc",async(querry)=>{
+        const user = auth(querry.token);
+        if(user !== null){
        const id=querry.docid;
        const ndoc=await docModal.findOne({_id:id});
        if(ndoc){
@@ -24,8 +24,11 @@ const getDoc=(socket)=>{
                   
        }
        else{
-        io.emit("errormessage","Not Found")
+        io.emit("err","Not Found")
        }
+    }else{
+        socket.emit("err","Unauthenticated");
+      }   
     })
 }
 module.exports={getDoc};

@@ -1,8 +1,10 @@
-const { stringModal } = require("../Db/modals/stringModal");
-const { io } = require("../socketWork");
+const {io, stringModal, auth} = require("../imports")
+
 
 const del = (socket)=>{
     socket.on("del",(q)=>{
+      const user = auth(q.token);
+      if(user !== null){
         const str = stringModal.findOne({_id : q._id})
         let curStr = q.str;
         let idx = Number(q.idx);
@@ -24,12 +26,18 @@ const del = (socket)=>{
                 let ln = str.length
                 let nstr = str.slice(0,idx) + str.slice(idx+1, ln);
                 io.emit("cur",nstr) 
+
                 str = nstr;
                 str.save()    
         }
       }
         
-        }      
+        }
+      }
+      else{
+        socket.emit("err","Unauthenticated");
+      }      
       })
+      
    }
    module.exports = {del};
