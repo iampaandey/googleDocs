@@ -1,0 +1,8 @@
+#toolbar{
+    background-color: #edf2fa;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+}

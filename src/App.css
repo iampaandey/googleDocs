@@ -1,12 +1,24 @@
-.App {
+body{
+  background-color: #f9fbfd;
+  color: rgba(39, 38, 38, 0.594);
+}
+.text-editor {
   text-align: center;
   display: flex;
   flex-direction: column;
   row-gap: 20px;
-  justify-content: center;
-  align-items: center;
   padding: 20px;
-  background-color: rgb(209, 255, 209);
+  
+}
+.innerItems{
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  column-gap: 130px;
+  flex-wrap: wrap;
+  row-gap: 70px;
+  padding: 20px;
+
 }
 .inp{
   margin-top: 100px;
@@ -15,11 +27,43 @@
   border-radius: 20px;
   padding: 10px;
 }
+#container{
+  width: 70%;
+  height: 100vh;
+  background-color: white;
+}
+.leftOptions{
+  background-color: #f9fbfd;
+}
+input{
+  background-color: #f9fbfd;
+  outline: none;
+  border: none;
+  width: 200px;
+  padding: 15px;
+  border-radius: 4px;
+}
+input:focus{
+  border: 2px rgba(51, 51, 161, 0.802) solid;
+  
+}
 .btn{
   padding: 10px;
   background-color: black;
   color: white;
   border-radius: 20px;
+}
+.btnsymbl{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+}
+.bsplus{
+  height: 55px;
+  width: 30px;
+  margin-top: 10px;
+  margin-left: 55px;
 }
 .App-logo {
   height: 40vmin;
