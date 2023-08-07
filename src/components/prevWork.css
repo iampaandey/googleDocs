@@ -1,0 +1,40 @@
+.prevwork{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* padding: 15px; */
+    width: 230px;
+    background-color: white;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.279);
+}
+.prevwork:hover{
+    border: 1px solid rgb(130, 130, 255);
+}
+.prv{
+
+background-color: rgba(248, 248, 248, 0.487);
+text-align: center;
+padding: 10px;
+height: 140px;
+}
+.btmPrevwork{
+    display: flex;
+    flex-direction: column;
+    /* row-gap: 3px; */
+    padding: 0px 8px;
+    
+}
+.fileInfo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: -35px;
+    column-gap: 3px;
+}
+.s-logo{
+    width: 30px;
+    height: 30px;
+}
