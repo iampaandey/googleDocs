@@ -2,6 +2,7 @@ import React from 'react'
 import './home.css'
 import add from '../images/add.png'
 import Prevwork from './Prevwork'
+import Navbar from './Navbar'
 const Home = () => {
   return (
     <div className='mn'>

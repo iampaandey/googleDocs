@@ -7,6 +7,7 @@ import QuillToolBar, { modules, formats } from "./components/Quilltoolbar.js";
 import "react-quill/dist/quill.snow.css";
 import { BsPlus} from "react-icons/bs";
 import Home from "./components/Home";
+import Navbar from "./components/Navbar";
 // const skt = io('http://localhost:7000')
 
 
@@ -30,7 +31,11 @@ function App() {
       el.focus()
     }
     return (
+      <>
+       <Navbar/>
       <Home/>
+      </>
+     
      
   );
 }
